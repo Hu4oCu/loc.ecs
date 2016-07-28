@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:remove="tag">
+    <link type="text/css" rel="stylesheet" href="../css/style.css" th:href="@{/resources/css/style.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+
+    <header>
+        <div class="header">
+            <form action="#" class="search-form">
+                <fieldset>
+                    <span class="text-wrap"><input type="text" class="text" placeholder="Что ищем? :)" /></span>
+                    <input type="submit" class="submit" value="&#128270;"/>
+                </fieldset>
+            </form>
+            <form action="/login" class="login-form" method="post"
+                  th:action="@{/login}">
+                <fieldset>
+                    <a href="/signup" class="button sign-up">Регистрация</a>
+                    <button type="submit" class="button sign-in">Войти</button>
+                    <span class="text-wrap"><input type="password" name="password" class="text" placeholder="Пароль" /></span>
+                    <span class="text-wrap"><input type="text" name="username" class="text" placeholder="Логин" /></span>
+                </fieldset>
+            </form>
+            <ul>
+                <li><a href="/">На главную</a></li>
+            </ul>
+            <a href="/cart" style="float:right;" id="cart_count" th:text="'В вашей корзине: ' + ${productCount} + ' товаров'">
+                В вашей корзине: 0 товаров
+            </a>
+        </div>
+    </header>
+
+    <footer>
+        <div class="copy-holder">
+            Copyright &copy; 2016
+        </div>
+    </footer>
+
+</html>

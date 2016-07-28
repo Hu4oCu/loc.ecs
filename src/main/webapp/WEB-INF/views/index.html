@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Главная страница</title>
+    <object th:replace="fragments :: head" th:remove="tag"></object>
+    <script>
+        $(document).ready(function(){
+            $("#addtocart").submit(function (event) {
+                event.preventDefault();
+
+                var $form = $(this ), url = $form.attr("action");
+                var input = $("input[name=_csrf]");
+                var csrf = input.attr("value");
+                $.ajaxSetup({
+                    headers:
+                    {'X-CSRF-TOKEN': csrf}
+                });
+                alert(url);
+                $.post(url);
+
+                var $pCount = /*[[${productCount}]]*/ "0";
+                document.getElementById("cart_count").innerHTML="В вашей корзине: " + $pCount + " товаров";
+                alert($pCount);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div th:replace="fragments :: header"></div>
+	<div id="main">
+        <div id="content">
+            <h1 id="page-name">Каталог товаров</h1>
+            <ul class="gallery">
+                <li th:each="product : ${products}">
+                    <a href="#" th:href="@{/product/{prodId}.html(prodId=*{product.pid})}">
+                        <img src="images/bg-image03.jpg" th:alt="*{product.description}" height="150"
+                             th:src="@{/resources/{src}(src=*{product.image})}" />
+                    </a>
+                    <h3><a href="/product" th:href="@{/product/{prodId}.html(prodId=*{product.pid})}">[[*{product.name}]]</a></h3>
+                    <span class="price">Цена: [[*{product.price}]] &#8376;</span>
+                    <form th:action="@{/cart/add(pid=*{product.pid})}" method="post" style="float:right;"
+                          id="addtocart">
+                        <button class="buy" type="submit">В корзину</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+	</div>
+    <div th:replace="fragments :: footer"></div>
+</body>
+</html>
