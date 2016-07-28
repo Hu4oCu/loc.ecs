@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title>[[${product.name}]]</title>
-	<object th:replace="fragments :: head" th:remove="tag"></object>
-</head>
-<body>
-	<div th:replace="fragments :: header"></div>
-	<div id="main">
-		<div>
-            <h2>[[${product.name}]]</h2>
-            <h5>Product ID: [[${product.pid}]]</h5>
+    <head>
+        <title>[[${product.name}]]</title>
+        <object th:replace="fragments :: head" th:remove="tag"></object>
+    </head>
+    <body>
+        <div th:replace="fragments :: header"></div>
+        <div id="main">
+            <div>
+                <h2>[[${product.name}]]</h2>
+                <h5>Product ID: [[${product.pid}]]</h5>
+            </div>
+            <img class="prod_image" src="images/someimage.png" alt="some description"
+                 th:src="@{/resources/{src}(src=*{product.image})}" th:alt="*{product.description}" />
+            <p>[[*{product.description}]]</p>
+            <div>
+                <span>Цена: [[${product.price}]] &#8376;</span>
+            </div>
         </div>
-        <img class="prod_image" src="images/someimage.png" alt="some description"
-             th:src="@{/resources/{src}(src=*{product.image})}" th:alt="*{product.description}" />
-        <p>[[*{product.description}]]</p>
-        <div>
-            <span>Цена: [[${product.price}]] &#8376;</span>
-        </div>
-	</div>
-	<object th:replace="fragments :: footer">
-	</object>
-</body>
+        <object th:replace="fragments :: footer">
+        </object>
+    </body>
 </html>
