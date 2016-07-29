@@ -48,8 +48,13 @@ public class CartController {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public String addtocart(@RequestParam(name = "pid", defaultValue = "0") Integer pid) {
+    public String addtocart(@RequestParam(name = "pid") Integer pid) {
         List<Carts> cart = cartsService.getCart(1);
+
+        Carts newItem = new Carts(1, pid, 1);
+
+        cartsService.addtocart(newItem);
+        cart.add(newItem);
 
         Integer product_count = cart.size();
 

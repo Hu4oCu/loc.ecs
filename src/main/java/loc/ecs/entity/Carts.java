@@ -20,6 +20,12 @@ public class Carts implements Serializable{
 
     protected Carts() {}
 
+    public Carts(int uid, int pid, int count) {
+        this.uid = uid;
+        this.pid = pid;
+        this.count = count;
+    }
+
     public Carts(int cid, int uid, int pid, int count) {
         this.cid = cid;
         this.uid = uid;
