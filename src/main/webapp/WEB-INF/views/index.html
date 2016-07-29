@@ -3,22 +3,6 @@
     <head>
         <title>Главная страница</title>
         <object th:replace="fragments :: head" th:remove="tag"></object>
-        <script>
-            $(document).ready(function(){
-                $(".addtocart").submit(function (event) {
-                    event.preventDefault();
-
-                    var $form = $(this ), url = $form.attr("action");
-
-                    $.post({
-                        url: url,
-                        success: function(data) {
-                            document.getElementById("cart_count").innerHTML="Товаров: " + data;
-                        }
-                    });
-                });
-            });
-        </script>
     </head>
     <body>
         <div th:replace="fragments :: header"></div>

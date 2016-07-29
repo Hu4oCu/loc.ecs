@@ -8,8 +8,8 @@ import java.io.Serializable;
 public class Carts implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cart_seq_gen")
-    @SequenceGenerator(name = "cart_seq_gen", sequenceName = "cart_id_seq")
-    @Column(name = "cart_id", nullable = false)
+    @SequenceGenerator(name = "cart_seq_gen", sequenceName = "cart_id_seq", allocationSize = 1)
+    @Column(name = "cart_id", nullable = false, unique = true, insertable = false, updatable = false)
     private int cid;
     @Column(name = "user_id")
     private int uid;

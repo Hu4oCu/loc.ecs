@@ -43,6 +43,7 @@ public class CartController {
         mav.addObject("productCount", product_count);
         mav.addObject("cart_items", products);
 
+
         return mav;
     }
 
@@ -55,6 +56,18 @@ public class CartController {
 
         cartsService.addtocart(newItem);
         cart.add(newItem);
+
+        Integer product_count = cart.size();
+
+        return product_count.toString();
+    }
+
+    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    @ResponseBody
+    public String removefromcart(@RequestParam(name = "uid") Integer uid, @RequestParam(name = "pid") Integer pid) {
+        cartsService.deletePid(1, pid);
+
+        List<Carts> cart = cartsService.getCart(1);
 
         Integer product_count = cart.size();
 

@@ -9,11 +9,16 @@
 		<div id="main">
 			<h1>Корзина</h1>
             <ul>
-                <li th:each="cart : ${cart_items}">
+                <li th:each="cart : ${cart_items}" th:id="*{cart.pid}">
+                    <form th:action="@{/cart/remove(uid=1, pid=*{cart.pid})}" method="post" style="float:left"
+                          class="removefromcart">
+                        <button type="submit">Удалить</button>
+                    </form>
                     [[*{cart.name}]]
                     Описание: [[*{cart.description}]]
                     Product ID: [[*{cart.pid}]]
                     Цена: [[*{cart.price}]] &#8376;
+                    Количество: <input th:value="${cart.pid}">
                 </li>
             </ul>
 		</div>

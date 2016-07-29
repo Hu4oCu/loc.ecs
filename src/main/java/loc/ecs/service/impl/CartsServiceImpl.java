@@ -24,7 +24,14 @@ public class CartsServiceImpl implements CartsService {
     }
 
     @Override
-    public void delete(int uid) {
-        cartsRepository.delete(uid);
+    public void deleteUid(int uid) {
+        cartsRepository.deleteByUid(uid);
     }
+
+    @Override
+    public void deletePid(int uid,int pid) {
+        cartsRepository.deleteByPid(uid, pid);
+    }
+
+
 }
