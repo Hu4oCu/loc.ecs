@@ -6,6 +6,8 @@ import loc.magazine.service.CartsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CartsServiceImpl implements CartsService {
     @Autowired
@@ -17,7 +19,7 @@ public class CartsServiceImpl implements CartsService {
     }
 
     @Override
-    public Carts getCart(int uid) {
+    public List<Carts> getCart(int uid) {
         return cartsRepository.getCartByUid(uid);
     }
 

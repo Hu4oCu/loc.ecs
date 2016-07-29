@@ -15,7 +15,7 @@
             <form action="/login" class="login-form" method="post"
                   th:action="@{/login}">
                 <fieldset>
-                    <a href="/signup" class="button sign-up">Регистрация</a>
+                    <a href="/auth/signup" class="button sign-up">Регистрация</a>
                     <button type="submit" class="button sign-in">Войти</button>
                     <span class="text-wrap"><input type="password" name="password" class="text" placeholder="Пароль" /></span>
                     <span class="text-wrap"><input type="text" name="username" class="text" placeholder="Логин" /></span>
@@ -24,8 +24,8 @@
             <ul>
                 <li><a href="/">На главную</a></li>
             </ul>
-            <a href="/cart" style="float:right;" id="cart_count" th:text="'В вашей корзине: ' + ${productCount} + ' товаров'">
-                В вашей корзине: 0 товаров
+            <a href="/cart" style="float:right;" id="cart_count">
+                В вашей корзине: [[${productCount}]] товаров
             </a>
         </div>
     </header>
