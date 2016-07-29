@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Регистрация</title>
+		<title>Корзина</title>
 		<object th:replace="fragments :: head" th:remove="tag"></object>
 	</head>
 	<body>
 		<div th:replace="fragments :: header"></div>
 		<div id="main">
-			<h1>Это корзина!</h1>
+			<h1>Корзина</h1>
+            <ul>
+                <li th:each="cart : ${cart_items}">
+                    [[*{cart.name}]]
+                    Описание: [[*{cart.description}]]
+                    Product ID: [[*{cart.pid}]]
+                    Цена: [[*{cart.price}]] &#8376;
+                </li>
+            </ul>
 		</div>
 		<object th:replace="fragments :: footer">
 		</object>

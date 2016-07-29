@@ -13,12 +13,10 @@
                     $.post({
                         url: url,
                         success: function(data) {
-                            document.getElementById("cart_count").innerHTML="В вашей корзине: " + data + " товаров";
+                            document.getElementById("cart_count").innerHTML="Товаров: " + data;
                         }
                     });
-
                 });
-
             });
         </script>
     </head>

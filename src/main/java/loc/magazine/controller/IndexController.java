@@ -20,7 +20,6 @@ public class IndexController {
         mav.setViewName("index");
 
         mav.addObject("products", productsService.getLast10Rows());
-        mav.addObject("productCount", 0);
 
         return mav;
     }
