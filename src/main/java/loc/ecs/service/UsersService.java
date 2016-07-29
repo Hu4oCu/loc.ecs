@@ -1,6 +1,6 @@
-package loc.magazine.service;
+package loc.ecs.service;
 
-import loc.magazine.entity.Users;
+import loc.ecs.entity.Users;
 
 public interface UsersService {
     Users addUser(Users user);

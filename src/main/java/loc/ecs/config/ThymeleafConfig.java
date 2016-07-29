@@ -1,4 +1,4 @@
-package loc.magazine.config;
+package loc.ecs.config;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -19,7 +19,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("loc.magazine")
+@ComponentScan("loc.ecs")
 @PropertySource("classpath:application.properties")
 public class ThymeleafConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
     @Override

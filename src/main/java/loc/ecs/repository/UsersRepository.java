@@ -1,6 +1,6 @@
-package loc.magazine.repository;
+package loc.ecs.repository;
 
-import loc.magazine.entity.Users;
+import loc.ecs.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsersRepository extends JpaRepository<Users, Integer> {

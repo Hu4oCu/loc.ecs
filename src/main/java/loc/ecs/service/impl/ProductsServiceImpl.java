@@ -1,11 +1,10 @@
-package loc.magazine.service.impl;
+package loc.ecs.service.impl;
 
-import loc.magazine.entity.Products;
-import loc.magazine.repository.ProductsRepository;
-import loc.magazine.service.ProductsService;
+import loc.ecs.entity.Products;
+import loc.ecs.repository.ProductsRepository;
+import loc.ecs.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.List;
 

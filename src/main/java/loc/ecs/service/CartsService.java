@@ -1,6 +1,6 @@
-package loc.magazine.service;
+package loc.ecs.service;
 
-import loc.magazine.entity.Carts;
+import loc.ecs.entity.Carts;
 
 import java.util.List;
 

@@ -24,7 +24,10 @@
             <ul>
                 <li><a href="/">На главную</a></li>
             </ul>
-            <a href="/cart" style="float:right;" id="cart_count">Нет товаров</a>
+            <div th:switch="${productCount}">
+                <a th:case="null" href="/cart" style="float:right;" id="cart_count">Нет товаров</a>
+                <a th:case="${productCount}" href="/cart" style="float:right;" id="cart_count">Товаров: [[${productCount}]]</a>
+            </div>
         </div>
     </header>
 

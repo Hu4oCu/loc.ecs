@@ -1,6 +1,6 @@
-package loc.magazine.service;
+package loc.ecs.service;
 
-import loc.magazine.entity.Products;
+import loc.ecs.entity.Products;
 import java.util.List;
 
 public interface ProductsService {

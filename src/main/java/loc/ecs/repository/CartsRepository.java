@@ -1,6 +1,6 @@
-package loc.magazine.repository;
+package loc.ecs.repository;
 
-import loc.magazine.entity.Carts;
+import loc.ecs.entity.Carts;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

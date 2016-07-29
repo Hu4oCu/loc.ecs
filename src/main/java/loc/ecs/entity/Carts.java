@@ -1,4 +1,4 @@
-package loc.magazine.entity;
+package loc.ecs.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

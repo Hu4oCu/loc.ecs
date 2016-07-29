@@ -1,8 +1,8 @@
-package loc.magazine.service.impl;
+package loc.ecs.service.impl;
 
-import loc.magazine.entity.Carts;
-import loc.magazine.repository.CartsRepository;
-import loc.magazine.service.CartsService;
+import loc.ecs.entity.Carts;
+import loc.ecs.repository.CartsRepository;
+import loc.ecs.service.CartsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

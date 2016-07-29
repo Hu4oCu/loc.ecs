@@ -1,4 +1,4 @@
-package loc.magazine.config;
+package loc.ecs.config;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;

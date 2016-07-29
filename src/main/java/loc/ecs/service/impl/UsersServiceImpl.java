@@ -1,8 +1,8 @@
-package loc.magazine.service.impl;
+package loc.ecs.service.impl;
 
-import loc.magazine.entity.Users;
-import loc.magazine.repository.UsersRepository;
-import loc.magazine.service.UsersService;
+import loc.ecs.entity.Users;
+import loc.ecs.repository.UsersRepository;
+import loc.ecs.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

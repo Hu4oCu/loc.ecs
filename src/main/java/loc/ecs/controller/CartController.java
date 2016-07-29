@@ -1,9 +1,9 @@
-package loc.magazine.controller;
+package loc.ecs.controller;
 
-import loc.magazine.entity.Carts;
-import loc.magazine.entity.Products;
-import loc.magazine.service.CartsService;
-import loc.magazine.service.ProductsService;
+import loc.ecs.entity.Carts;
+import loc.ecs.entity.Products;
+import loc.ecs.service.CartsService;
+import loc.ecs.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,9 +30,12 @@ public class CartController {
         mav.setViewName("cart");
 
         List<Carts> cart = cartsService.getCart(1);
-        List<Products> products = cart.stream().map(cartItem -> productsService.getProductsById(cartItem.getPid()))
+        List<Products> products = cart.stream().map(cartItem ->
+                productsService.getProductsById(cartItem.getPid()))
                 .collect(Collectors.toList());
 
+        Integer product_count = cart.size();
+        mav.addObject("productCount", product_count);
         mav.addObject("cart_items", products);
 
         return mav;
