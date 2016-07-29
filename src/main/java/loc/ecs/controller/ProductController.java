@@ -26,17 +26,19 @@ public class ProductController {
 
         List<Carts> cart = cartsService.getCart(1);
 
-        Integer product_count = cart.size();
+        Integer product_count;
+        if (cart.isEmpty())
+            product_count = null;
+        else
+            product_count = cart.size();
 
         mav.addObject("productCount", product_count);
 
         Products product = productsService.getProductsById(id);
-        if (product.getName().contentEquals("Not Found")) {
+        if (product.getName().contentEquals("Not Found"))
             mav.setViewName("error/404");
-        }
-        else {
+        else
             mav.addObject("product", product);
-        }
 
         return mav;
     }

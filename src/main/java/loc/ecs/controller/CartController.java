@@ -34,7 +34,12 @@ public class CartController {
                 productsService.getProductsById(cartItem.getPid()))
                 .collect(Collectors.toList());
 
-        Integer product_count = cart.size();
+        Integer product_count;
+        if (cart.isEmpty())
+            product_count = null;
+        else
+            product_count = cart.size();
+
         mav.addObject("productCount", product_count);
         mav.addObject("cart_items", products);
 

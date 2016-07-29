@@ -27,7 +27,11 @@ public class IndexController {
 
         List<Carts> cart = cartsService.getCart(1);
 
-        Integer product_count = cart.size();
+        Integer product_count;
+        if (cart.isEmpty())
+            product_count = null;
+        else
+            product_count = cart.size();
 
         mav.addObject("productCount", product_count);
         mav.addObject("products", productsService.getLast10Rows());
