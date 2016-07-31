@@ -8,19 +8,47 @@
 		<div th:replace="fragments :: header"></div>
 		<div id="main">
 			<h1>Корзина</h1>
-            <ul>
-                <li th:each="cart : ${cart_items}" th:id="*{cart.pid}">
-                    <form th:action="@{/cart/remove(uid=1, pid=*{cart.pid})}" method="post" style="float:left"
-                          class="removefromcart">
-                        <button type="submit">Удалить</button>
-                    </form>
-                    [[*{cart.name}]]
-                    Описание: [[*{cart.description}]]
-                    Product ID: [[*{cart.pid}]]
-                    Цена: [[*{cart.price}]] &#8376;
-                    Количество: <input th:value="${cart.pid}">
-                </li>
-            </ul>
+            <div class="shopping-cart">
+
+                <div class="column-labels">
+                    <label class="product-image">Картинка</label>
+                    <label class="product-details">Название</label>
+                    <label class="product-price">Стоимость</label>
+                    <label class="product-quantity">Количество</label>
+                    <label class="product-removal">Удалить</label>
+                    <label class="product-line-price">Всего</label>
+                </div>
+
+                <div class="product" th:each="cart : ${cart_items}">
+                    <div class="product-image">
+                        <img th:src="@{/resources/{src}(src=*{cart.image})}">
+                    </div>
+                    <div class="product-details">
+                        <div class="product-title">[[*{cart.name}]]</div>
+                        <p class="product-description">Product ID: [[*{cart.pid}]]</p>
+                    </div>
+                    <div class="product-price">[[*{cart.price}]]</div>
+                    <div class="product-quantity">
+                        <input type="number" value="2" min="1">
+                    </div>
+                    <div class="product-removal">
+                        <button type="submit" class="remove-product" th:id="*{cart.pid}">
+                            Удалить
+                        </button>
+                    </div>
+                    <div class="product-line-price">[[*{cart.price}]]</div>
+                </div>
+
+                <div class="totals">
+                    <div class="totals-item totals-item-total">
+                        <label>Общая стоимость</label>
+                        <div class="totals-value" id="cart-total">90.57</div>
+                    </div>
+                </div>
+
+                <button class="checkout">Оформить заказ</button>
+
+            </div>
 		</div>
 		<object th:replace="fragments :: footer">
 		</object>

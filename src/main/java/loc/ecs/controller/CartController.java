@@ -67,9 +67,9 @@ public class CartController {
     public String removefromcart(@RequestParam(name = "uid") Integer uid, @RequestParam(name = "pid") Integer pid) {
         cartsService.deletePid(1, pid);
 
-        List<Carts> cart = cartsService.getCart(1);
+        Integer product_count = cartsService.getCart(1).size();
 
-        Integer product_count = cart.size();
+        product_count--;
 
         return product_count.toString();
     }
