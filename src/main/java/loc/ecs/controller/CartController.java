@@ -65,8 +65,12 @@ public class CartController {
 
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
     @ResponseBody
-    public void removefromcart(@RequestParam(name = "uid") Integer uid, @RequestParam(name = "pid") Integer pid) {
+    public String removefromcart(@RequestParam(name = "uid") Integer uid, @RequestParam(name = "pid") Integer pid) {
         cartsService.deletePid(1, pid);
+
+        Integer product_count = cartsService.getCart(1).size();
+
+        return product_count.toString();
     }
 
 }
