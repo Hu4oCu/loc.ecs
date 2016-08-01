@@ -7,6 +7,7 @@ import loc.ecs.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,10 +27,7 @@ public class CartController {
     private ProductsService productsService;
 
     @RequestMapping(value = {"/", ""}, method = RequestMethod.GET)
-    public ModelAndView cart() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("cart");
-
+    public String cart(Model model) {
         List<Carts> cart = cartsService.getCart(1);
         List<Products> products = cart.stream().map(cartItem ->
                 productsService.getProductsById(cartItem.getPid()))
@@ -41,11 +39,10 @@ public class CartController {
         else
             product_count = cart.size();
 
-        mav.addObject("productCount", product_count);
-        mav.addObject("cart_items", products);
+        model.addAttribute("productCount", product_count);
+        model.addAttribute("cart_items", products);
 
-
-        return mav;
+        return "cart";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)

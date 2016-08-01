@@ -64,6 +64,7 @@ public class ThymeleafConfig extends WebMvcConfigurerAdapter implements Applicat
 
         return resolver;
     }
+
     @Bean
     public JedisConnectionFactory connectionFactory() {
         return new JedisConnectionFactory();

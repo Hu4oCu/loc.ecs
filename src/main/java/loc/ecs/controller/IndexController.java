@@ -5,10 +5,13 @@ import loc.ecs.service.CartsService;
 import loc.ecs.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.annotation.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -20,11 +23,9 @@ public class IndexController {
     @Autowired
     private CartsService cartsService;
 
+    @SessionScope
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
-    public ModelAndView index() {
-        ModelAndView mav = new ModelAndView();
-        mav.setViewName("index");
-
+    public String index(Model model) {
         List<Carts> cart = cartsService.getCart(1);
 
         Integer product_count;
@@ -33,9 +34,9 @@ public class IndexController {
         else
             product_count = cart.size();
 
-        mav.addObject("productCount", product_count);
-        mav.addObject("products", productsService.getLast10Rows());
+        model.addAttribute("productCount", product_count);
+        model.addAttribute("products", productsService.getLast10Rows());
 
-        return mav;
+        return "index";
     }
 }
