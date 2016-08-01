@@ -10,8 +10,6 @@ import java.util.List;
 
 @Repository
 public interface ProductsRepository extends JpaRepository<Products, Integer> {
-
     @Query(value = "SELECT * FROM ecs_products ORDER BY product_id DESC LIMIT 10;", nativeQuery = true)
     List<Products> getLastTenRows();
-
 }

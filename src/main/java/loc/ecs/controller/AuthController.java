@@ -16,7 +16,6 @@ public class AuthController {
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signup(Model model) {
 
-
         return "signup";
     }
 

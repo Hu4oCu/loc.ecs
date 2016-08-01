@@ -13,7 +13,6 @@ $(document).ready(function(){
     });
 
     var fadeTime = 0;
-
     /* Assign actions */
     $('.product-quantity input').change( function() {
         updateQuantity(this);
@@ -34,7 +33,6 @@ $(document).ready(function(){
                 }
             }
         });
-
         removeItem(this);
     });
 
