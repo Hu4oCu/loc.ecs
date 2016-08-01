@@ -140,6 +140,9 @@ header {
 	padding: 0;
 	position:relative;
 }
+.gallery .addtocart {
+    float: right;
+}
 .gallery li{
 	display:inline-block;
 	width:250px;

@@ -17,9 +17,10 @@
                         </a>
                         <h3><a href="/product" th:href="@{/product/{prodId}.html(prodId=*{product.pid})}">[[*{product.name}]]</a></h3>
                         <span class="price">Цена: [[*{product.price}]] &#8376;</span>
-                        <form th:action="@{/cart/add(pid=*{product.pid})}" method="post" style="float:right;"
-                              class="addtocart">
-                            <button class="buy" type="submit" th:id="*{product.pid}">Купить</button>
+                        <form th:action="@{/cart/add(pid=*{product.pid})}" method="post" class="addtocart"
+                              th:switch="${bought[__*{product.pid}__]}">
+                            <button th:case="false" class="buy" type="submit" th:id="*{product.pid}">Купить</button>
+                            <button th:case="true" class="buy" type="submit">В корзине</button>
                         </form>
                     </li>
                 </ul>

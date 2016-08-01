@@ -2,14 +2,20 @@ $(document).ready(function(){
     $(".addtocart").submit(function (event) {
         event.preventDefault();
 
-        var $form = $(this ), url = $form.attr("action");
+        var $form = $(this), url = $form.attr("action");
 
-        $.post({
-            url: url,
-            success: function(data) {
-                document.getElementById("cart_count").innerHTML="Товаров: " + data;
-            }
-        });
+        if ($form.children('.buy').text() == "Купить") {
+            $.post({
+                url: url,
+                success: function (data) {
+                    document.getElementById("cart_count").innerHTML = "Товаров: " + data;
+                    $form.children('.buy').text("В корзине");
+                }
+            });
+        }
+        else {
+            document.open().location.pathname="/cart";
+        }
     });
 
     var fadeTime = 0;
