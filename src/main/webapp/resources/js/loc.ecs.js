@@ -12,20 +12,6 @@ $(document).ready(function(){
         });
     });
 
-/*    $(".removefromcart").submit(function (event) {
-        event.preventDefault();
-
-        var $form = $(this), url = $form.attr("action");
-
-        $.post({
-            url: url,
-            success: function (data) {
-                document.getElementById("cart_count").innerHTML="Товаров : " + data;
-            }
-        })
-    });*/
-
-    /* Set rates + misc */
     var fadeTime = 0;
 
     /* Assign actions */
@@ -38,11 +24,18 @@ $(document).ready(function(){
         var url = "/cart/remove?uid=1&pid=" + product_id;
 
         $.post({
-            url: url,
-            success: function (data) {
-                document.getElementById("cart_count").innerHTML="Товаров: " + data;
-            }
+            url: url
         });
+
+        var count = $('#cart_count').text().substr(9);
+
+        count--;
+        if (count == 0) {
+            document.getElementById("cart_count").innerHTML = "Нет товаров";
+        }
+        else {
+            document.getElementById("cart_count").innerHTML = "Товаров: " + count;
+        }
 
         removeItem(this);
     });
